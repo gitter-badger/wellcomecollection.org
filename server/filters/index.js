@@ -7,6 +7,7 @@ import getCommissionedSeries from './get-commissioned-series';
 import getSeriesTitle from './get-series-title';
 import getViewBox from './get-viewbox';
 import gridClasses from './grid-classes';
+import gridClassesX from './grid-classes-x';
 import spacingClasses from './spacing-classes';
 import fontClasses from './font-classes';
 import componentClasses from './component-classes';
@@ -32,6 +33,7 @@ export default Map({
   getSeriesTitle,
   getViewBox,
   gridClasses,
+  gridClassesX,
   spacingClasses,
   fontClasses,
   concat,

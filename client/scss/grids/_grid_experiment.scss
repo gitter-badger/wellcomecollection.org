@@ -1,0 +1,90 @@
+.x-grid { // is equivalent of container
+  display: grid;
+  grid-auto-rows: minmax(50px, auto);
+
+  @each $label, $map in $grid-config { //make generic function that can be used below
+    $respond: map-get($map, 'respond');
+    $min: map-get($map, 'padding');
+    $columns: '[full-start] minmax(#{$min}, 1fr) [main-start] minmax(0, #{$container-width-max}) [main-end] minmax(#{$min}, 1fr) [full-end]';
+
+    @include respond-to(nth($respond, 1)) {
+      grid-template-columns: unquote($columns);
+    }
+  }
+
+  // @function grid-columns($l-primary-start: 1, $l-primary-end: 7, $l-secondary-start: 8, $l-secondary-end: 12, $columns: $totalColumns) {
+  //   @for $i from 1 through $columns {
+  //     @if $i == $l-primary-start {
+  //       unquote('[l-primary-start]');
+  //     } @else if $i == $l-secondary-start {
+  //       [l-secondary-start]
+  //     }
+  //       #{$i}fr
+  //     @if $i == $l-primary-end {
+  //       [l-primary-end]
+  //     } @else if $i == $l-primary-end {
+  //       [l-secondary-end]
+  //     }
+  //   // [xl-primary-start]
+  //   // [xl-secondary-start]
+  //   // [xl-primary-end]
+  //   // [xl-secondary-end]
+
+  //   }
+  //   @return 'test';
+  // }
+
+  // TODO drop respond between
+  // TODO diff. primary and secondary at xl
+  // TODO how change at smaller breakpoints
+  // TODO how container queries work
+  // TODO shift equivalent
+
+}
+
+.grid-12 { // is equivalent of grid -- TODO change classname - grid probably better
+  grid-column: main;
+  grid-auto-rows: minmax(50px, auto);
+  background: color('seaweed');
+  display: grid;
+  $x: '[ primary-start ] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [primary-end secondary-start] 1fr 1fr 1fr 1fr [secondary-end]';
+  grid-template-columns: unquote($x);
+  // grid-template-columns: repeat(12, 1fr);
+
+  @each $label, $map in $grid-config {
+    $respond: map-get($map, 'respond');
+    $gutter: map-get($map, 'gutter');
+
+    @if (length($respond) > 1) {
+      @include respond-between(nth($respond, 1), nth($respond, 2)) {
+        grid-column-gap: $gutter;
+      }
+    } @else {
+      @include respond-to($respond) {
+        grid-column-gap: $gutter;
+      }
+    }
+  }
+}
+
+.x-full { // is equivalent of breakout
+  grid-column: full;
+  background: color('elf-green');
+  // TODO full needs own main grid inside it?
+}
+
+.x-cell {
+  background: color('petrol');
+}
+
+.cell--primary {
+  background: color('mint');
+  grid-column: primary;
+}
+
+.cell--secondary {
+  background: color('smoke');
+  grid-column: 9 / -1;
+}
+
+// TODO better approach, but not backwards compaitble - change the grid iteself at breakpoints?

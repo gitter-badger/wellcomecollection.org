@@ -91,6 +91,18 @@
   }
 }
 
+@mixin x-cells($columns, $key) {
+  @for $i from 1 through $columns {
+    .x-cell--#{$key}#{$i} {
+      grid-column: span #{$i};
+    }
+
+    // .grid__cell--shift-#{$key}#{$i} { TODO - replace shift with start 'grid-row-start'
+    //
+    // }
+  }
+}
+
 @mixin font($font-name) {
   $font: map-get($fonts, $font-name);
 

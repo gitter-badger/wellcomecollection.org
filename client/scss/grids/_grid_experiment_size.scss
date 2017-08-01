@@ -1,0 +1,9 @@
+@each $key, $list in $grid-config {
+  $columns: map-get($list, 'columns');
+  $respond: map-get($list, 'respond');
+  $lower: nth($respond, 1);
+
+  @include respond-to($lower) {
+    @include x-cells($columns, $key);
+  }
+}

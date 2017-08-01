@@ -8,6 +8,46 @@
 
 {% block body %}
 
+<div class="x-grid">
+  <div class="grid-12">
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
+  </div>
+  <div class="grid-12">
+    <div class="{{ {s: 6, m: 6, l: 7, xl:5} | gridClassesX }}"></div>
+    <div class="{{ {s: 6, m: 6, l: 5, xl:7} | gridClassesX }}"></div>
+  </div>
+  <div class="grid-12">
+    <div class="{{ {s: 12, m: 4, l: 4, xl:4} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 4, l: 4, xl:4} | gridClassesX }}"></div>
+    <div class="{{ {s: 12, m: 4, l: 4, xl:4} | gridClassesX }}"></div>
+  </div>
+
+  <div class="x-full"></div>
+  <div class="grid-12"></div>
+  <div class="x-full">
+    <div class="grid-12">
+      123
+    </div>
+  </div>
+  <div class="x-full x-grid">
+    <div class="grid-12">
+      <div class="cell--primary">primary</div>
+      <div class="cell--secondary">secondary</div>
+    </div>
+  </div>
+</div>
+{#
   {% block seriesNavigation %}
     {% for series in article.series %}
       {% if series.commissionedLength %}
@@ -119,6 +159,6 @@
         </div>
       {% endif %}
     {% endfor %}
-  {% endblock %}
+  {% endblock %}#}
 
 {% endblock %}
