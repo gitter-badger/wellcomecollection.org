@@ -45,9 +45,10 @@
 }
 
 .grid-12 { // is equivalent of grid
+  position: relative;
   grid-column: main;
   grid-auto-rows: minmax(50px, auto);
-  background: color('seaweed');
+  //background: color('seaweed');
   display: grid;
 
   @each $label, $map in $grid-config {
@@ -70,21 +71,23 @@
 
 .x-full { // is equivalent of breakout
   grid-column: full;
-  background: color('elf-green');
+  // background: color('elf-green');
 }
 
 .x-cell {
-  background: color('petrol');
+  // background: color('petrol');
 }
 
 .cell--primary {
-  background: color('mint');
+  // background: color('mint');
   grid-column: primary;
 }
 
 .cell--secondary {
-  background: color('smoke');
+  // background: color('smoke');
   grid-column: secondary;
+  position: sticky;
+  // height: 0;
 }
 
 // TODO better approach, but not backwards compaitble - change the grid iteself at breakpoints?

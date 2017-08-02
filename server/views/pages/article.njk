@@ -8,7 +8,29 @@
 
 {% block body %}
 
-<div class="x-grid">
+<div class="article" itemprop="articleBody">
+  {% block articleBody %}
+    {% component 'article-body', {articleBody: article.bodyParts, contentType: article.contentType} %}
+  {% endblock %}
+
+  {% for author in article.author %}
+    {% component 'author', {
+      name: author.name,
+      twitterHandle: author.twitterHandle,
+      modifiers: ['border-left'],
+      description: author.description,
+      image: author.image
+    } %}
+  {% endfor %}
+
+  {% componentV2 'divider', null, {'stub': true, 'black': true}, {extraClasses: [{s:4} | spacingClasses({margin: ['top']})]} %}
+
+  {% if article.tags.length > 0 %}
+    {% component 'tags', { tags: article.tags } %}
+  {% endif %}
+</div>
+
+{#<div class="x-grid">
   <div class="grid-12">
     <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
     <div class="{{ {s: 12, m: 6, l: 1, xl:1} | gridClassesX }}"></div>
@@ -63,7 +85,8 @@
       <div class="cell--secondary">secondary 3</div>
     </div>
   </div>
-</div>
+</div>#}
+
 {#
   {% block seriesNavigation %}
     {% for series in article.series %}
