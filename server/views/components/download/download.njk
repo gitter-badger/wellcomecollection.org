@@ -1,5 +1,7 @@
-<div class="download">
+<a id="download-link" href="#download">Download</a> {# TODO just here while developing move this to be part of a info/download/link component? #}
+<div id="download" class="download">
   <h2>Download</h2>
+  <a href="#download-link" style="float: right; clear: both; display block;">close</a>
   {# TODO -  all V images are cc-by, so currently hard coding until license data is available from the API#}
   {% componentV2 'license', {subject: model.imgLink, licenseType: 'CC-BY'}, {}, {showMessage: true} %}
   {% for size in model.sizes %}
@@ -8,7 +10,7 @@
   {% endfor %}
 </div>
 
-{# TODO - tracking? #}
 {# TODO - talk to platform team about getting download specific links to images
         - in order to ensure image is downloaded and not navigated to, the server response will need Content-Dispostion header set to attachment (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition)
 N.B a tag download attribute won't work across all browsers and when image is from a different origin #}
+{# TODO - tracking use? #}
