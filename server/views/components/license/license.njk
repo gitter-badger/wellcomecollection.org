@@ -3,7 +3,6 @@
 {% else %}
   {% set licenseText = model.licenseType %}
 {% endif %}
-
 {% set iconClasses = ['icon--2x', 'v-align-middle'] %}
 
 <span class="{{ {s:'LR2'} | fontClasses }}"{% if model.subject %} about="{{model.subject}}{% endif %}">
@@ -43,3 +42,10 @@
     </a>
   {% endif %}
 </span>
+{% if data.showMessage and model.licenseType === 'CC-BY' %} {# as only have message for this license type at present #}
+  <p class="{{ {s:'LR2'} | fontClasses }} {{ {s:2} | spacingClasses({margin: ['top', 'bottom']}) }}">
+    This work is licensed under Creative Commons Attribution. You are permitted to distribute, remix, tweak, and build upon the work, even commercially, as long as you credit the original creator. {# real text for this needs to be determined. ssee 1109 #}
+  </p>
+{% endif %}
+
+{# TODO clarify actual messages for each license type and add them all, see https://github.com/wellcometrust/wellcomecollection.org/issues/1109#}
