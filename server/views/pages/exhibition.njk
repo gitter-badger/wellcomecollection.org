@@ -41,13 +41,33 @@
     </div>
   </div>
 
-  <div class="row {{ {s:10} | spacingClasses({padding: ['bottom']}) }}">
+  <div class="row {{ {s:2} | spacingClasses({padding: ['bottom']}) }}">
     <div class="container">
       <div class="grid">
         <div class="{{ {s:12, m:10, shiftM:1, l:7, xl:7} | gridClasses }} {{ {s:'HNL3', m:'HNL2'} | fontClasses}} {{ {s:4} | spacingClasses({margin: ['bottom']}) }}">
           {% block exhibitionDescription %}
             {{ exhibition.text.value | safe }}
           {% endblock %}
+          {# TODO - make this dynamic; temporarily hard coded for first exhibition #}
+          {% componentV2 'promo',
+            {
+              "contentType": "gallery",
+              "length": 10,
+              "image": {
+                "type": "picture",
+                "contentUrl": "https://iiif.wellcomecollection.org/image/prismic:806c7afb0573c7184b2049de218e5d552b33436a_cgdsyl1---smoking-is-slow-motion-suicide-biman-mullick-cleanair.jpg/full/600,/0/default.jpg",
+                "width": 600,
+                "height": 333
+              },
+              "title": "Can graphic design save your life?",
+              "url": "/",
+              "description": "Aenean quam lectus, euismod nec commodo eu, sollicitudin et risus. Curabitur in porttitor mauris. Sed porta dolor eget semper scelerisque.",
+              "modifiers": [
+                "underlined"
+              ]
+            },
+          {}, {sizes: '(min-width: 1420px) 698px, (min-width: 960px) 50.23vw, (min-width: 600px) calc(83.24vw - 73px), calc(100vw - 36px)'} %}
+
         </div>
         <div class="{{ {s:12, m:10, shiftM:1, l:5, xl:5} | gridClasses }}">
           <div class="drawer js-show-hide"
@@ -79,8 +99,8 @@
             </p>
           {% endblock %}
 
-
           <hr class="divider divider--pumice divider--keyline" />
+
         </div>
       </div>
     </div>
@@ -108,7 +128,6 @@
       </div>
     </div>
   {% endif %}
-
 </article>
 {% endblock %}
 
