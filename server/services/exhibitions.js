@@ -7,11 +7,7 @@ import {prismicApi, prismicPreviewApi} from './prismic-api';
 
 export async function getExhibition(id: string, previewReq: ?Request): Promise<?Exhibition> {
   const prismic: IApi = previewReq ? await prismicPreviewApi(previewReq) : await prismicApi();
-  const fetchLinks = [
-    'access-statements.title',
-    'access-statements.description'
-  ];
-  const exhibition = await prismic.getByID(id, {fetchLinks});
+  const exhibition = await prismic.getByID(id, {});
 
   if (!exhibition) return;
 
@@ -20,6 +16,9 @@ export async function getExhibition(id: string, previewReq: ?Request): Promise<?
   const video = bodyParts.find(p => p.type === 'video-embed');
   const text = bodyParts.find(p => p.type === 'text');
   const imageGallery = bodyParts.find(p => p.type === 'imageGallery');
+  const relatedArticleIds = exhibition.data.articles.map(item => {
+    return item.article.id;
+  });
 
   return ({
     blockType: 'exhibitions',
@@ -32,6 +31,7 @@ export async function getExhibition(id: string, previewReq: ?Request): Promise<?
     description: exhibition.data.description && RichText.asHtml(exhibition.data.description),
     video: video,
     text: text,
-    imageGallery: imageGallery
+    imageGallery: imageGallery,
+    relatedArticles: relatedArticleIds
   }: Exhibition);
 }
