@@ -29,6 +29,7 @@ import toggleShowHide from './components/toggle-show-hide';
 import scrollToInfo from './components/scroll-to-info';
 import workMediaControls from './components/work-media-controls';
 import copyUrl from './components/copy-url';
+import masonry from './components/masonry';
 
 const init = () => {
   polyfills.init();
@@ -58,6 +59,8 @@ const init = () => {
   const scrollToInfoEls = document.querySelectorAll('.js-scroll-to-info');
   const workMediaEls = document.querySelectorAll('.js-work-media');
   const copyUrlEls = document.querySelectorAll('.js-copy-url');
+  const masonrySelector = '.js-masonry';
+  const masonryEl = document.querySelector(masonrySelector);
 
   nodeList(copyUrlEls).forEach(copyUrl);
 
@@ -70,6 +73,10 @@ const init = () => {
   nodeList(toggleShowHideEls).forEach(toggleShowHide);
 
   nodeList(scrollToInfoEls).forEach(scrollToInfo);
+
+  if (masonryEl) {
+    masonry(masonrySelector);
+  }
 
   if (mainEl) {
     gaScrollDepth(mainEl);

@@ -90,7 +90,7 @@
 
     <div class="row {{ {s:4} | spacingClasses({padding: ['top']}) }} ">
       <div class="container">
-        <div class="grid">
+        <div class="grid js-masonry">
           {% for result in resultsList.results %}
           <div class="{{ {s:6, m:4, l:3 , xl:2} | gridClasses }}">
             {% set img = {contentUrl: result.thumbnail.url, width: 300, height: 300} %}
